@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-main">
+                <div class="header-text">
+                    <h1>🌍 Carbon Footprint Calculator</h1>
+                    <p class="subtitle">Track and visualize your carbon emissions</p>
+                </div>
+                <div class="header-actions">
+                    <div class="user-info" id="userInfo">
+                        <span id="userDisplayName" class="user-name"></span>
+                        <button onclick="goToProfile()" class="btn-profile">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Statistics Dashboard -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <h3>Total Emissions</h3>
+                <p class="stat-value" id="totalEmissions">0 kg</p>
+                <span class="stat-label">CO₂e</span>
+            </div>
+            <div class="stat-card">
+                <h3>Activities Tracked</h3>
+                <p class="stat-value" id="totalActivities">0</p>
+                <span class="stat-label">entries</span>
+            </div>
+            <div class="stat-card">
+                <h3>Daily Average</h3>
+                <p class="stat-value" id="dailyAverage">0 kg</p>
+                <span class="stat-label">per day</span>
+            </div>
+            <div class="stat-card">
+                <h3>Offset Cost</h3>
+                <p class="stat-value" id="offsetCost">$0</p>
+                <span class="stat-label">estimated</span>
+            </div>
+        </section>
+
+        <!-- Activity Input Form -->
+        <section class="input-section">
+            <h2>Add New Activity</h2>
+            
+            <div class="form-group">
+                <label for="activityType">Activity Type:</label>
+                <select id="activityType" onchange="updateFormFields()">
+                    <option value="">Select Activity Type</option>
+                    <option value="electricity">⚡ Electricity Usage</option>
+                    <option value="travel">🚗 Travel (Car/Bus/Train/Plane)</option>
+                    <option value="freight">📦 Freight/Shipping</option>
+                    <option value="procurement">🛒 Procurement/Purchases</option>
+                    <option value="fuel">⛽ Fuel Consumption</option>
+                </select>
+            </div>
+
+            <!-- Dynamic form fields based on activity type -->
+            <div id="dynamicFields"></div>
+
+            <button onclick="calculateEmission()" class="btn-primary">Calculate Emission</button>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="chart-container">
+                <h2>Daily Emissions (Last 7 Days)</h2>
+                <canvas id="dailyChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Weekly Emissions (Last 4 Weeks)</h2>
+                <canvas id="weeklyChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Emissions by Activity Type</h2>
+                <canvas id="activityChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Offset Suggestions -->
+        <section class="offset-section" id="offsetSection" style="display: none;">
+            <h2>🌱 Carbon Offset Suggestions</h2>
+            <div id="offsetContent"></div>
+        </section>
+
+        <!-- Recent Activities -->
+        <section class="history-section">
+            <h2>Recent Activities</h2>
+            <div id="activityHistory"></div>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Firebase Auth Check -->
+    <script type="module" src="dashboard-auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+

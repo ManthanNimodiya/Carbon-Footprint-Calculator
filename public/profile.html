@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>🌍 My Profile</h1>
+                <button onclick="goBack()" class="btn-back">← Back to Dashboard</button>
+            </div>
+        </header>
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <img id="userAvatar" src="" alt="User Avatar" style="display: none;">
+                    <div id="avatarPlaceholder" class="avatar-placeholder">
+                        <span id="userInitials">U</span>
+                    </div>
+                </div>
+                
+                <div class="profile-info">
+                    <h2 id="userName">Loading...</h2>
+                    <p id="userEmail" class="user-email">user@example.com</p>
+                    <span id="authProvider" class="auth-badge">Email</span>
+                </div>
+
+                <button onclick="logout()" class="btn-logout">
+                    🚪 Logout
+                </button>
+            </div>
+        </section>
+
+        <!-- User Statistics -->
+        <section class="user-stats-section">
+            <h2>Your Carbon Footprint Summary</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Emissions</h3>
+                    <p class="stat-value" id="userTotalEmissions">0 kg</p>
+                    <span class="stat-label">CO₂e tracked</span>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Activities Logged</h3>
+                    <p class="stat-value" id="userTotalActivities">0</p>
+                    <span class="stat-label">entries</span>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Account Age</h3>
+                    <p class="stat-value" id="accountAge">0 days</p>
+                    <span class="stat-label">member since</span>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Offset Potential</h3>
+                    <p class="stat-value" id="offsetAmount">$0</p>
+                    <span class="stat-label">estimated</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Account Information -->
+        <section class="account-info-section">
+            <h2>Account Information</h2>
+            
+            <div class="info-card">
+                <div class="info-row">
+                    <span class="info-label">User ID:</span>
+                    <span class="info-value" id="userId">-</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">Email Verified:</span>
+                    <span class="info-value" id="emailVerified">
+                        <span class="badge badge-pending">Pending</span>
+                    </span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">Last Sign In:</span>
+                    <span class="info-value" id="lastSignIn">-</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">Account Created:</span>
+                    <span class="info-value" id="accountCreated">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actions Section -->
+        <section class="actions-section">
+            <h2>Account Actions</h2>
+            
+            <div class="actions-grid">
+                <button onclick="sendVerificationEmail()" class="action-btn" id="verifyEmailBtn">
+                    ✉️ Verify Email
+                </button>
+                
+                <button onclick="resetPassword()" class="action-btn">
+                    🔐 Reset Password
+                </button>
+                
+                <button onclick="goBack()" class="action-btn">
+                    📊 View Dashboard
+                </button>
+                
+                <button onclick="deleteAccount()" class="action-btn action-btn-danger">
+                    🗑️ Delete Account
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="profile-firebase.js"></script>
+</body>
+</html>
+

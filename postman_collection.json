@@ -1,0 +1,398 @@
+{
+  "info": {
+    "name": "Carbon Footprint Calculator API",
+    "description": "Complete API collection for testing Carbon Footprint Calculator endpoints with Climatiq integration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "health"]
+        },
+        "description": "Check if API server is running"
+      }
+    },
+    {
+      "name": "Emissions",
+      "item": [
+        {
+          "name": "Calculate Electricity Emission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_type\": \"electricity\",\n  \"energy\": 100,\n  \"energy_unit\": \"kWh\",\n  \"region\": \"US\",\n  \"year\": 2022\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/calculate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "calculate"]
+            },
+            "description": "Calculate emissions from electricity consumption"
+          }
+        },
+        {
+          "name": "Calculate Travel Emission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_type\": \"travel\",\n  \"distance\": 50,\n  \"distance_unit\": \"km\",\n  \"vehicle_type\": \"car\",\n  \"fuel_type\": \"petrol\",\n  \"region\": \"GB\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/calculate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "calculate"]
+            },
+            "description": "Calculate emissions from travel (car, bus, train, plane)"
+          }
+        },
+        {
+          "name": "Calculate Freight Emission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_type\": \"freight\",\n  \"weight\": 500,\n  \"weight_unit\": \"kg\",\n  \"distance\": 1000,\n  \"distance_unit\": \"km\",\n  \"transport_mode\": \"truck\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/calculate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "calculate"]
+            },
+            "description": "Calculate emissions from freight/shipping"
+          }
+        },
+        {
+          "name": "Calculate Procurement Emission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_type\": \"procurement\",\n  \"money\": 500,\n  \"money_unit\": \"usd\",\n  \"category\": \"consumer_goods-type_consumer_goods\",\n  \"region\": \"US\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/calculate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "calculate"]
+            },
+            "description": "Calculate emissions from purchases"
+          }
+        },
+        {
+          "name": "Calculate Fuel Emission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_type\": \"fuel\",\n  \"volume\": 50,\n  \"volume_unit\": \"l\",\n  \"fuel_type\": \"petrol\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/calculate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "calculate"]
+            },
+            "description": "Calculate emissions from fuel consumption"
+          }
+        },
+        {
+          "name": "Batch Calculate Emissions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emissions\": [\n    {\n      \"activity_type\": \"electricity\",\n      \"energy\": 50,\n      \"energy_unit\": \"kWh\",\n      \"region\": \"US\"\n    },\n    {\n      \"activity_type\": \"travel\",\n      \"distance\": 30,\n      \"distance_unit\": \"km\",\n      \"vehicle_type\": \"car\",\n      \"fuel_type\": \"petrol\",\n      \"region\": \"GB\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/batch",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "batch"]
+            },
+            "description": "Calculate multiple emissions in batch"
+          }
+        },
+        {
+          "name": "Get All Emissions History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/history",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "history"]
+            },
+            "description": "Get all emission records"
+          }
+        },
+        {
+          "name": "Get Daily Emissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/daily?days=7",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "daily"],
+              "query": [
+                {
+                  "key": "days",
+                  "value": "7",
+                  "description": "Number of days to retrieve (default: 7)"
+                }
+              ]
+            },
+            "description": "Get daily aggregated emissions"
+          }
+        },
+        {
+          "name": "Get Weekly Emissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/weekly?weeks=4",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "weekly"],
+              "query": [
+                {
+                  "key": "weeks",
+                  "value": "4",
+                  "description": "Number of weeks to retrieve (default: 4)"
+                }
+              ]
+            },
+            "description": "Get weekly aggregated emissions"
+          }
+        },
+        {
+          "name": "Get Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/statistics",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "statistics"]
+            },
+            "description": "Get overall emission statistics"
+          }
+        },
+        {
+          "name": "Get Today's Emissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/today",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "today"]
+            },
+            "description": "Get emissions for today"
+          }
+        },
+        {
+          "name": "Search Emission Factors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/search?query=electricity&region=US",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "electricity"
+                },
+                {
+                  "key": "region",
+                  "value": "US"
+                }
+              ]
+            },
+            "description": "Search for available emission factors"
+          }
+        },
+        {
+          "name": "Delete Emission Record",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/emissions/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "emissions", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "em_1234567890_abc123",
+                  "description": "Emission record ID"
+                }
+              ]
+            },
+            "description": "Delete a specific emission record"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Offsets",
+      "item": [
+        {
+          "name": "Get Offset Suggestions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/offsets/suggestions?co2_kg=100",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "offsets", "suggestions"],
+              "query": [
+                {
+                  "key": "co2_kg",
+                  "value": "100",
+                  "description": "Amount of CO2 in kg (optional, uses total if not provided)"
+                }
+              ]
+            },
+            "description": "Get carbon offset project suggestions"
+          }
+        },
+        {
+          "name": "Calculate Offset Cost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"co2_kg\": 100,\n  \"price_per_ton\": 15\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/offsets/calculate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "offsets", "calculate"]
+            },
+            "description": "Calculate cost to offset specific CO2 amount"
+          }
+        },
+        {
+          "name": "Get Total Offset Suggestions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/offsets/total",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "offsets", "total"]
+            },
+            "description": "Get offset suggestions for all tracked emissions"
+          }
+        },
+        {
+          "name": "Get Project Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/offsets/projects/:projectId",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "offsets", "projects", ":projectId"],
+              "variable": [
+                {
+                  "key": "projectId",
+                  "value": "mock-1",
+                  "description": "Project ID"
+                }
+              ]
+            },
+            "description": "Get details for a specific offset project"
+          }
+        }
+      ]
+    }
+  ]
+}
+

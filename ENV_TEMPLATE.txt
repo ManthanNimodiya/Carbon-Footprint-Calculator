@@ -1,0 +1,19 @@
+# COPY THIS FILE AND RENAME IT TO '.env'
+# Then fill in your actual API keys
+
+# Server Configuration
+PORT=3000
+
+# Climatiq API Configuration (REQUIRED)
+# Get your API key from: https://www.climatiq.io/
+CLIMATIQ_API_KEY=your_actual_climatiq_api_key_here
+CLIMATIQ_API_URL=https://api.climatiq.io
+
+# Gold Standard API Configuration (OPTIONAL - for offset suggestions)
+# Get your API key from: https://www.goldstandard.org/
+GOLD_STANDARD_API_KEY=your_gold_standard_api_key_here
+GOLD_STANDARD_API_URL=https://api.goldstandard.org
+
+# Environment
+NODE_ENV=development
+
